@@ -9,14 +9,11 @@
         <h1>A propos de {{ $title }} </h1>
 
         <ul>
-            @foreach ($teams as $member)
-                <li> {{ $member }} </li>
+            @foreach ($team as $member)
+                <li>
+                    <a href="/a-propos/{{ $member['name'] }}"> {{ $member['name'] }} </a>
+                </li>
             @endforeach
         </ul>
-
-        @if ($user)
-            <p> {{ $user }} est séléctionné </p>
-        @endif
-        
     @endsection
 @endsection

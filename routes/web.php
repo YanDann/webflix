@@ -37,16 +37,19 @@ Route::get('/julien/{friend?}', function (Request $request, string $friend = nul
     ]);
 });
 
-Route::get('/a-propos/{user?}', function (string $user = null) {
-    $team = ['Yan', 'Ares', 'Guts'];
-
-    if ($user && !in_array($user, $team)) {
-        abort(404);
-    }
+Route::get('/a-propos', function () {
+    $team = [
+        ['name' => 'Yan',],
+        ['name' => 'Ares',],
+        ['name' => 'Guts',],
+    ];
 
     return view('a-propos', [
         'title' => 'Webflix',
-        'teams' => $team,
-        'user' => ucfirst($user),
+        'team' => $team,
     ]);
+});
+
+Route::get('/a-propos/{user}', function (string $user) {
+    return view('about-show', ['user' => $user]);
 });
