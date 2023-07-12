@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\AboutTeam;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JulienFriendController;
 use Illuminate\Support\Facades\Route;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,41 +16,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'name' => 'Julien',
-        'title' => 'Webflix',
-        'numbers' => [1, 2, 3],
-    ]);
-});
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/julien/{friend?}', function (Request $request, string $friend = null) {
-    // Pour les paramètres get...
-    dump($_GET['color'] ?? null); // Ancienne méthode...
-    dump($request->input('color', 'red')); // Nouvelle méthode...
-    dump(request('color')); // Methode rapide...
+Route::get('/julien/{friend?}', [JulienFriendController::class, 'show']);
 
-    return view('julien', [
-        'age' => Carbon::parse('1994-03-20')->age,
-        'color' => $request->input('color', 'red'),
-        //'color' => request('color'),
-        'friend' => ucfirst($friend),
-    ]);
-});
-
-Route::get('/a-propos', function () {
-    $team = [
-        ['name' => 'Yan',],
-        ['name' => 'Ares',],
-        ['name' => 'Guts',],
-    ];
-
-    return view('a-propos', [
-        'title' => 'Webflix',
-        'team' => $team,
-    ]);
-});
-
-Route::get('/a-propos/{user}', function (string $user) {
-    return view('about-show', ['user' => $user]);
-});
+Route::get('/a-propos', [AboutTeam::class, 'showTeam']);
+Route::get('/a-propos/{user}', [AboutTeam::class, 'showTeamMate']);
