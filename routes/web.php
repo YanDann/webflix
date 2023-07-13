@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutTeam;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JulienFriendController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,15 @@ Route::get('/julien/{friend?}', [JulienFriendController::class, 'show']);
 
 Route::get('/a-propos', [AboutTeam::class, 'showTeam']);
 Route::get('/a-propos/{user}', [AboutTeam::class, 'showTeamMate']);
+
+Route::get('/categories', function() {
+    return Category::all();
+});
+
+Route::get('/category-test', function() {
+    $category = new Category();
+    $category->name = 'Action';
+    $category->save();
+
+    return $category;
+});
