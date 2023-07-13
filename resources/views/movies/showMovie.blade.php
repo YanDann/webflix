@@ -1,14 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    @section('title')
-        A propos - @parent
-    @endsection
+@section('title')
+    A propos - @parent
+@endsection
 
-    @section('content')
-        <h1>A propos de {{ $movie->title }} </h1>
-
-        <p>Synopsys : {{ $movie->synopsys }} </p>
+@section('content')
+    <div>
+        <h1> {{ $movie->title }} </h1>
+        <p> {{ $movie->synopsys }} </p>
         <p>Durée : {{ $movie->duration }} </p>
-    @endsection
+        <p>Sortie : {{ $movie->released_at }} </p>
+        <p>Catégorie : {{ $movie->category_id }} </p>
+    </div>
+@endsection
 @endsection
