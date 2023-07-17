@@ -26,6 +26,8 @@ Route::get('/julien/{friend?}', [JulienFriendController::class, 'show']);
 Route::get('/a-propos', [AboutTeam::class, 'showTeam']);
 Route::get('/a-propos/{user}', [AboutTeam::class, 'showTeamMate']);
 
+// Webflix
+
 Route::get('/categories', [CategoryController::class,'index']);
 Route::get('/categories/creer', [CategoryController::class, 'create']);
 Route::post('/categories/creer', [CategoryController::class, 'store']);
@@ -40,6 +42,8 @@ Route::get('/category-test', function() {
 
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/movies/add', [MovieController::class, 'add']);
-Route::post('/movies/add', [MovieController::class, 'store']);
+Route::post('/movies/add', [MovieController::class, 'store']);  
 Route::get('/movies/{id}', [MovieController::class, 'showMovie']);
+
+// php artisan route:list => voir toutes les routes du projet
 

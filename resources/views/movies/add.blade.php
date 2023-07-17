@@ -35,8 +35,9 @@
         <br>
         <label for="category">Catégorie</label>
         <select name="category" id="category">
+            <option disabled selected>Choisir une catégorie</option>
             @foreach ($categories->sortBy('name') as $category)
-                <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                <option value="{{ $category->id }}" @selected($category->id == old('category'))> {{ $category->name }} </option>
             @endforeach
         </select>
         @error('category') 
