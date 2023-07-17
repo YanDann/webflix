@@ -7,6 +7,7 @@
     <ul>
         @foreach ($movies as $movie)
             <div>
+                <img src="{{ $movie->cover }}" width="400" alt="{{ $movie->title }}">
                 <h3> {{ $movie->title }} </h3>
                 <p> {{ $movie->synopsys }} </p>
                 <p>Durée : {{ $movie->duration }} </p>

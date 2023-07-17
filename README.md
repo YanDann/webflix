@@ -41,3 +41,19 @@ Si on veut lister les routes de l'application :
 ```bash
     php artisan route:list
 ```
+
+Pour remplir la BDD, on peut faire (test) :
+
+```bash
+    # Ajoute les données
+    php artisan db:seed
+
+    # Vide la base
+    php artisan migrate:fresh --seed
+```
+
+N'oubliez pas la clé API dans le `.env` :
+
+```bash
+    THEMOVIEDB_API_KEY=???
+```
