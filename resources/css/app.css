@@ -1,0 +1,34 @@
+body {
+    background-color: whitesmoke;
+}
+
+.list-movie-title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.list-movie-title a {
+    color: black;
+}
+
+.list-movie-title a:hover {
+    text-decoration: none;
+}
+
+.list-movie-meta {
+    font-size: 12px;
+}
+
+.list-movie-content {
+    min-height: 160px;
+}
+
+.list-movie-synopsys {
+    font-size: 14px;
+}
+
+.list-movie-img {
+    width: 100%;
+    height: 365px;
+    object-fit: cover;
+}

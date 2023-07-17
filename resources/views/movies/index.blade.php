@@ -2,20 +2,26 @@
 
 @section('content')
     <h1>Nos films</h1>
-    <a href="/movies/add">Ajouter un film</a>
+    {{-- <a href="/movies/add">Ajouter un film</a> --}}
 
-    <ul>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 my-5">
         @foreach ($movies as $movie)
-            <div>
-                <img src="{{ $movie->cover }}" width="400" alt="{{ $movie->title }}">
-                <h3> {{ $movie->title }} </h3>
-                <p> {{ $movie->synopsys }} </p>
-                <p>Durée : {{ $movie->duration }} </p>
-                <p>Sortie : {{ $movie->released_at }} </p>
-                <p>Catégorie : {{ $movie->category_id }} </p>
+        <div class="col">
+            <img class="img-fluid list-movie-img" src="{{ $movie->cover }}"  alt="{{ $movie->title }}">
+                    <div class="d-flex flex-column justify-content-between list-movie-content">
+                    <h3 class="list-movie-title my-2">
+                        <a href="/movies/{{ $movie->id }}">
+                            {{ $movie->title }}
+                        </a>
+                    </h3>
+                    <p class="list-movie-synopsys"> {{ Str::words($movie->synopsys, 10) }} </p>
+                    <p class="list-movie-meta">
+                        {{ $movie->duration }} |
+                        {{ $movie->released_at->translatedFormat('d F Y') }} |
+                        {{ $movie->category->name }}
+                    </p>
+                </div>
             </div>
-
-            <a href="/movies/{{$movie->id}}">Voir</a>
         @endforeach
-    </ul>
+    </div>
 @endsection
