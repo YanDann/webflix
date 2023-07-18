@@ -21,10 +21,23 @@
                     <p class="list-movie-meta">
                         {{ $movie->duration }} |
                         @if ($movie->released_at)
-                        {{ $movie->released_at->translatedFormat('d F Y') }} |
+                            {{ $movie->released_at->translatedFormat('d F Y') }} |
                         @endif
                         {{ $movie->category->name }}
                     </p>
+
+                    @if (Auth::user() && $movie->user_id === Auth::user()->id)
+                    <div class="text-center">
+                        <a href="/movie/{{ $movie->id }}/modifier" class="btn btn-lg"
+                            style="font-size: 18px">🖋️</a>
+                        <form class="d-inline" action="/movie/{{ $movie->id }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-lg" style="font-size: 18px">🗑️</button>
+                        </form>
+                    </div>
+                    @endif
+
                 </div>
             </div>
         @endforeach

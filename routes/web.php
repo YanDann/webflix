@@ -42,12 +42,19 @@ Route::get('/category-test', function() {
     return $category;
 });
 
+// Movies
+
 Route::get('/movies', [MovieController::class, 'index']);
+Route::get('/movie/{id}', [MovieController::class, 'showMovie']);
 Route::get('/movies/add', [MovieController::class, 'add'])->middleware('auth');
 Route::post('/movies/add', [MovieController::class, 'store'])->middleware('auth');  
-Route::get('/movies/{id}', [MovieController::class, 'showMovie']);
+Route::get('/movie/{movie}/modifier', [MovieController::class, 'edit'])->middleware('auth');
+Route::put('/movie/{movie}/modifier', [MovieController::class, 'update'])->middleware('auth'); 
+Route::delete('/movie/{id}', [MovieController::class, 'destroy'])->middleware('auth');
 
 // php artisan route:list => voir toutes les routes du projet
+
+// Authentification
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
