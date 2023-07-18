@@ -43,6 +43,12 @@ Pour la base de données, on a les migrations :
     php artisan migrate:fresh --seed
 ```
 
+Attention pour l'upload, modifiez le `.env`
+
+```bash
+    FILESYSTEM_DISK=public
+```
+
 ## Workflow
 
 Si vous travaillez sur le front, n'oubliez pas de lancer le serveur de dev :

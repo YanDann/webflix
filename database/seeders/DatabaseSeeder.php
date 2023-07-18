@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'email' => 'julien@gmail.com',
         ]);
+        User::factory()->create([
+            'email' => 'mitch@gmail.com', 'name' => 'Mitch',
+        ]);
 
         // Category::factory(5)->create();
         // Category::factory()->create(['name' => 'Action']);
@@ -54,6 +57,7 @@ class DatabaseSeeder extends Seeder
                 'released_at' => $result['release_date'],
                 'youtube' => $result['videos']['results'][0]['key'] ?? null,
                 'category_id' => $result['genres'][0]['id'] ?? null,
+                'user_id' => User::all()->random(),
             ]);
         }
     }
