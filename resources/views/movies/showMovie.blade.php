@@ -14,4 +14,3 @@
         <p>Catégorie : {{ $movie->category_id }} </p>
     </div>
 @endsection
-@endsection

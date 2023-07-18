@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutTeam;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JulienFriendController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -47,3 +48,5 @@ Route::get('/movies/{id}', [MovieController::class, 'showMovie']);
 
 // php artisan route:list => voir toutes les routes du projet
 
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'store']);
