@@ -12,11 +12,22 @@
                 <div class="card-header">Connexion</div>
 
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div>
+                            <ul class="alert alert-danger px-4" style="list-style: none">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form action="" method="post">
+                        @csrf
                         <div class="w-50 mx-auto mb-3">
                             <label class="mb-2" for="email">Email</label>
                             <input class="form-control" type="text" name="email" id="email"
-                                placeholder="Ecrivez votre e-mail">
+                                placeholder="Ecrivez votre e-mail" value="{{ old('email') }}">
                         </div>
                         <div class="w-50 mx-auto mb-3">
                             <label class="mb-2" for="password">Mot de passe</label>

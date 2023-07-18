@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutTeam;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JulienFriendController;
@@ -48,5 +49,10 @@ Route::get('/movies/{id}', [MovieController::class, 'showMovie']);
 
 // php artisan route:list => voir toutes les routes du projet
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
+Route::delete('/logout', [LoginController::class, 'destroy']);
+
+// Mon compte
+
+Route::get('/mon-compte', [AccountController::class, 'index'])->middleware('auth');

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Movie;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 
@@ -13,6 +14,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // Utilisateurs
+        User::factory()->create([
+            'email' => 'julien@gmail.com',
+        ]);
+
         // Category::factory(5)->create();
         // Category::factory()->create(['name' => 'Action']);
 
