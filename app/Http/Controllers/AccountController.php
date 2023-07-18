@@ -9,6 +9,6 @@ class AccountController extends Controller
 {
     public function index()
     {
-        return 'Bonjour '.Auth::user()->name;
+        return view('auth.account');
     }
 }

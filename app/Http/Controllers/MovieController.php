@@ -46,18 +46,30 @@ class MovieController extends Controller
             'synopsys' => 'required|min:10',
             'duration' => 'required|integer|min:1',
             'youtube' => 'nullable|string',
+            'cover' => 'required|image|max:2048',
             'released_at' => 'nullable|date',
             'category' => 'nullable|exists:categories,id',
         ]);
 
-        $movie = new Movie();
-        $movie->title = $request->input('title');
-        $movie->synopsys = $request->input('synopsys');
-        $movie->duration = $request->input('duration');
-        $movie->youtube = $request->input('youtube');
-        $movie->released_at = $request->input('released_at');
-        $movie->category_id = $request->input('category');
-        $movie->save();
+        // $movie = new Movie();
+        // $movie->title = $request->input('title');
+        // $movie->synopsys = $request->input('synopsys');
+        // $movie->duration = $request->input('duration');
+        // $movie->youtube = $request->input('youtube');
+        // $movie->released_at = $request->input('released_at');
+        // $movie->category_id = $request->input('category');
+        // $movie->save();
+
+        Movie::create([
+            'title' => $request->title,
+            'synopsys' => $request->synopsys,
+            'duration' => $request->duration,
+            'youtube' => $request->youtube,
+            'cover' => '/storage/'.$request->file('cover')->store('movies'),
+            'released_at' => $request->released_at,
+            'category_id' => $request->category,
+            'user_id' => $request->user()->id,
+        ]);
 
         return redirect('/movies');
     }

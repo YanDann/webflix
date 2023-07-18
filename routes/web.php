@@ -43,8 +43,8 @@ Route::get('/category-test', function() {
 });
 
 Route::get('/movies', [MovieController::class, 'index']);
-Route::get('/movies/add', [MovieController::class, 'add']);
-Route::post('/movies/add', [MovieController::class, 'store']);  
+Route::get('/movies/add', [MovieController::class, 'add'])->middleware('auth');
+Route::post('/movies/add', [MovieController::class, 'store'])->middleware('auth');  
 Route::get('/movies/{id}', [MovieController::class, 'showMovie']);
 
 // php artisan route:list => voir toutes les routes du projet
