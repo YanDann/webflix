@@ -18,8 +18,9 @@ class ActorController extends Controller
     public function showActor(string $actorId)
     {
         $actor = Actor::findOrFail($actorId);
-        
 
-        return view('actors.showActor', ['actor' => $actor]);
+        return view('actors.showActor', [
+            'actor' => $actor,
+        ]);
     }
 }

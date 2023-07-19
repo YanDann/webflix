@@ -61,20 +61,18 @@ class DatabaseSeeder extends Seeder
             ]);
 
             foreach (collect($result['credits']['cast'])->take(2) as $cast) {
-                // Requête API pour UN acteur...
                 $actor = Http::get('https://api.themoviedb.org/3/person/'.$cast['id'], [
                     'api_key' => config('services.themoviedb.key'),
                     'language' => 'fr-FR',
                 ])->json();
     
-                $actor = Actor::create([
+                $actor = Actor::firstOrCreate([
                     'id' => $actor['id'],
                     'name' => $actor['name'],
                     'avatar' => 'https://image.tmdb.org/t/p/w500'.$actor['profile_path'],
                     'birthday' => $actor['birthday'] ?? null,
                 ]);
-    
-                // On lie l'acteur au film...
+
                 $movie->actors()->attach($actor);
             }
         }

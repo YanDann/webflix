@@ -17,7 +17,10 @@
                 <p> {{ $actor->birthday }} </p>
 
                 <h2>Films</h2>
-                <img class="img-fluid list-movie-img" src="{{ $movie->cover }}" alt="{{ $movie->title }}">
+                @foreach ($actor->movies as $movie)
+                <img class="" src=" {{ $movie['cover'] }} " alt="">
+                @endforeach
+                
             </div>
         </div>
     </div>
