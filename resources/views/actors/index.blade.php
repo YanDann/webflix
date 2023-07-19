@@ -18,6 +18,9 @@
                     <img class="img-fluid list-movie-img" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
                     <div class="d-flex flex-column justify-content-between flex-grow1">
                         <h3 class="list-actor-name my-2">{{ $actor->name }}</h3>
+                        @if ($actor->birthday != null)
+                            <p> {{ $actor->getAge() - $actor->birthday->format('Y') }} ans </p>
+                        @endif
                     </div>
                 </a>
             </div>

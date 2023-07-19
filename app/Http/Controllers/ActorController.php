@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Actor;
-use App\Models\Movie;
-use Illuminate\Http\Request;
 
 class ActorController extends Controller
 {
@@ -14,6 +12,7 @@ class ActorController extends Controller
             'actors' => Actor::all(),
         ]);
     }
+
 
     public function showActor(string $actorId)
     {
