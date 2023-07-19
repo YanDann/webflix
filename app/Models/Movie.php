@@ -20,17 +20,26 @@ class Movie extends Model
      */
     protected $guarded = [];
 
-    public function duration(): Attribute 
+    public function duration(): Attribute
     {
         return Attribute::make(
-            get: function ($value) 
-            {
+            get: function ($value) {
                 $hours = floor($value / 60);
                 $minutes = $value % 60;
                 $zero = ($minutes < 10) ? '0' : '';
 
-                return $hours.'h'.$zero.$minutes;
-            }
+                return $hours . 'h' . $zero . $minutes;
+            },
+
+            set: function ($value) {
+                // $value = '2h24';
+                $time = explode('h', $value);
+            
+                if (count($time) === 2) {
+                    return $time[0] * 60 + (int) $time[1];
+                }
+                return $time[0];
+            },
         );
     }
 

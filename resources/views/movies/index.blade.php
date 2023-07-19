@@ -13,7 +13,7 @@
                 <img class="img-fluid list-movie-img" src="{{ $movie->cover }}" alt="{{ $movie->title }}">
                 <div class="d-flex flex-column justify-content-between flex-grow-1">
                     <h3 class="list-movie-title my-2">
-                        <a href="/movies/{{ $movie->id }}">
+                        <a href="/movie/{{ $movie->id }}">
                             {{ $movie->title }}
                         </a>
                     </h3>
