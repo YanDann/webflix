@@ -56,6 +56,7 @@ Route::delete('/movie/{id}', [MovieController::class, 'destroy'])->middleware('a
 // Actors
 
 Route::get('/actors', [ActorController::class, 'index']);
+Route::get('/actor/{id}', [ActorController::class, 'showActor']);
 
 // php artisan route:list => voir toutes les routes du projet
 

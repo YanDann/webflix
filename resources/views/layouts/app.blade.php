@@ -30,6 +30,7 @@
                     <a class="nav-link active" href="/">Accueil</a>
                     <a class="nav-link" href="/julien">Julien</a>
                     <a class="nav-link" href="/movies">Films</a>
+                    <a class="nav-link" href="/actors">Acteurs</a>
                     <a class="nav-link" href="/categories">Catégories</a>
                     {{-- @todo faire un dropdown --}}
                     {{-- <a class="nav-link" href="/julien?color=orange">Orange</a>

@@ -13,10 +13,15 @@
 
     <div class="row row-cols1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 my-5">
         @foreach ($actors as $actor)
-        <div class="col d-flex flex-column">
-            <img src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
-        </div>
+            <div class="col d-flex flex-column shadow m-3">
+                <a href="/actor/{{ $actor->id }}" style="text-decoration: none; color: black">
+                    <img class="img-fluid list-movie-img" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
+                    <div class="d-flex flex-column justify-content-between flex-grow1">
+                        <h3 class="list-actor-name my-2">{{ $actor->name }}</h3>
+                    </div>
+                </a>
+            </div>
         @endforeach
     </div>
-    
+
 @endsection

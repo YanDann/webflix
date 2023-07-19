@@ -32,3 +32,7 @@ body {
     height: 365px;
     object-fit: cover;
 }
+
+.list-actor-name {
+    font-size: 25px;
+}
