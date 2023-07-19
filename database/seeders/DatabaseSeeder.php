@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Actor;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\User;
@@ -45,11 +46,10 @@ class DatabaseSeeder extends Seeder
             $result = Http::get('https://api.themoviedb.org/3/movie/'.$result['id'], [
                 'api_key' => config('services.themoviedb.key'),
                 'language' => 'fr-FR',
-                'append_to_response' => 'videos',
+                'append_to_response' => 'videos,credits',
             ])->throw()->json();
-            dump($result);
 
-            Movie::factory()->create([
+            $movie = Movie::factory()->create([
                 'title' => $result['title'],
                 'synopsys' => $result['overview'],
                 'duration' => $result['runtime'],
@@ -59,6 +59,23 @@ class DatabaseSeeder extends Seeder
                 'category_id' => $result['genres'][0]['id'] ?? null,
                 'user_id' => User::all()->random(),
             ]);
+
+            foreach (collect($result['credits']['cast'])->take(2) as $cast) {
+                // Requête API pour UN acteur...
+                $actor = Http::get('https://api.themoviedb.org/3/person/'.$cast['id'], [
+                    'api_key' => config('services.themoviedb.key'),
+                    'language' => 'fr-FR',
+                ])->json();
+    
+                $actor = Actor::factory()->create([
+                    'name' => $actor['name'],
+                    'avatar' => 'https://image.tmdb.org/t/p/w500'.$actor['profile_path'],
+                    'birthday' => $actor['birthday'] ?? null,
+                ]);
+    
+                // On lie l'acteur au film...
+                $movie->actors()->attach($actor);
+            }
         }
     }
 }

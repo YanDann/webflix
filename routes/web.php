@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutTeam;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ActorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JulienFriendController;
@@ -51,6 +52,10 @@ Route::post('/movies/add', [MovieController::class, 'store'])->middleware('auth'
 Route::get('/movie/{movie}/modifier', [MovieController::class, 'edit'])->middleware('auth');
 Route::put('/movie/{movie}/modifier', [MovieController::class, 'update'])->middleware('auth'); 
 Route::delete('/movie/{id}', [MovieController::class, 'destroy'])->middleware('auth');
+
+// Actors
+
+Route::get('/actors', [ActorController::class, 'index']);
 
 // php artisan route:list => voir toutes les routes du projet
 
