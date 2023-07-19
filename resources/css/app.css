@@ -33,6 +33,28 @@ body {
     object-fit: cover;
 }
 
+.list-actor-img {
+    width: 100%;
+    height: 365px;
+    object-fit: cover;
+}
+
 .list-actor-name {
     font-size: 25px;
+}
+
+.img-movie-actor {
+    height: 350px;
+}
+
+.img-avatar {
+    height: 550px;
+}
+
+.div-actor {
+    width: auto;
+}
+
+.index-actors {
+    margin: auto;
 }

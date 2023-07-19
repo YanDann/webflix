@@ -22,4 +22,11 @@ class ActorController extends Controller
             'actor' => $actor,
         ]);
     }
+
+    public function create()
+    {
+        return view('actors.create', [
+            'actors' => Actor::all(),
+        ]);
+    }
 }
