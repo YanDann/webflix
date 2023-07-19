@@ -59,6 +59,9 @@ Route::get('/actors', [ActorController::class, 'index']);
 Route::get('/actor/{id}', [ActorController::class, 'showActor']);
 Route::get('/actors/create', [ActorController::class, 'create'])->middleware('auth');
 Route::post('/actors/create', [ActorController::class, 'store'])->middleware('auth');
+Route::get('/actor/{actor}/modifier', [ActorController::class, 'edit'])->middleware('auth');
+Route::put('/actor/{actor}/modifier', [ActorController::class, 'update'])->middleware('auth'); 
+
 
 // php artisan route:list => voir toutes les routes du projet
 
