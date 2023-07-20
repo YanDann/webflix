@@ -11,7 +11,7 @@
             <img class="img-avatar" src="{{ $actor->avatar }}" alt="{{ $actor->name }}">
         </div>
 
-        <div>
+        <div class="w-100">
             <div class="shadow py-2 px-3 mx-3">
                 <div class="mb-3">
                     <h1> {{ $actor->name }} </h1>
@@ -22,7 +22,7 @@
                 <h2>Films</h2>
                 @foreach ($actor->movies as $movie)
                     <a href="/movie/{{ $movie['id'] }}">
-                        <img class="img-movie-actor" src=" {{ $movie['cover'] }} " alt="">
+                        <img class="img-cover-actor" src=" {{ $movie['cover'] }} " alt="">
                     </a>
                     <p> {{ $movie->title }} </p>
                 @endforeach
