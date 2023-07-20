@@ -23,6 +23,15 @@
                             @endif
                         </div>
                     </a>
+                    <div class="text-center">
+                        <a href="/actor/{{ $actor->id }}/modifier" class="btn btn-lg"
+                            style="font-size: 18px">🖋️</a>
+                        <form class="d-inline" action="/actor/{{ $actor->id }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-lg" style="font-size: 18px">🗑️</button>
+                        </form>
+                    </div>
                 </div>
             @endforeach
         </div>
