@@ -58,3 +58,11 @@ body {
 .index-actors {
     margin: auto;
 }
+
+.bs-example{
+    margin: 20px;
+}
+.modal-dialog iframe{
+    margin: 0 auto;
+    display: block;
+}
