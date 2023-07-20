@@ -12,10 +12,13 @@
         </div>
 
         <div>
-            <div class="shadow mx-5 p-3 div-actor">
-                <h1> {{ $actor->name }} </h1>
+            <div class="shadow py-2 px-3 mx-3">
+                <div class="mb-3">
+                    <h1> {{ $actor->name }} </h1>
+                </div>
+                <div class="d-flex justify-content-between my-2">
                 <p> {{ $actor->getAge() - $actor->birthday->format('Y') }} ans </p>
-
+                </div>
                 <h2>Films</h2>
                 @foreach ($actor->movies as $movie)
                     <a href="/movie/{{ $movie['id'] }}">
