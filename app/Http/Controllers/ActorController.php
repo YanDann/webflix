@@ -11,7 +11,7 @@ class ActorController extends Controller
     public function index()
     {
         return view('actors.index', [
-            'actors' => Actor::all(),
+            'actors' => Actor::paginate(8),
         ]);
     }
 

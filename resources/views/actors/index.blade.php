@@ -36,4 +36,5 @@
             @endforeach
         </div>
     </div>
+    {{ $actors->links() }}
 @endsection
