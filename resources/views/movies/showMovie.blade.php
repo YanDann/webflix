@@ -11,7 +11,7 @@
             <img src=" {{ $movie->cover }} " alt=" {{ $movie->title }} ">
         </div>
         <div class="w-100">
-            <div class="shadow p-4 mx-4">
+            <div class="shadow p-4 mx-4 mb-5">
                 <div class="mb-3">
                     <h1> {{ $movie->title }} </h1>
                 </div>
@@ -63,6 +63,34 @@
                             </div>
                         @endforeach
                     </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="shadow p-4 mx-4">
+                    <form action="" method="post">
+                        @csrf
+                        
+                        <div>
+                            <label class="form-label" for="comment">Message</label>
+                            <textarea class="form-control" name="comment" id="comment" cols="30" rows="5"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="form-label" for="note">Note</label>
+                            <select class="form-control" name="note" id="note">
+                                @for ($i = 0; $i <= 5; $i++)
+                                <option value="{{ $i }} / 5">
+                                    {{ $i }} / 5
+                                </option>
+                                @endfor
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-dark my-3">Envoyer</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

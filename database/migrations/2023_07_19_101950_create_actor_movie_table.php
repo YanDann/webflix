@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('actor_movie', function (Blueprint $table) {
-            $table->increments('id');
             $table->foreignId('actor_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('movie_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
