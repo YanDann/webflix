@@ -7,7 +7,7 @@
         
         <div>
             <label for="name">Nom</label>
-            <input type="text" name="name" id="name" value="{{ old('name') }}">
+            <input type="text" name="name" id="name" value="{{ old('name', $actor->name) }}">
             @error('name')
                 <div> {{ $message }} </div>
             @enderror
@@ -15,7 +15,7 @@
 
         <div>
             <label for="avatar">Avatar</label>
-            <input type="file" name="avatar" id="avatar">
+            <input type="file" name="avatar" id="avatar" value="{{ $actor->avatar }}">
             @error('avatar')
                 <div> {{ $message }} </div>
             @enderror
@@ -23,12 +23,12 @@
 
         <div>
             <label for="birthday">Date de naissance</label>
-            <input type="date" name="birthday" id="birthday">
+            <input type="date" name="birthday" id="birthday" value="{{ old('birthday', $actor->birthday->format('Y-m-d')) }}">
             @error('birthday')
                 <div> {{ $message }} </div>
             @enderror
         </div>
 
-        <button>Ajouter</button>
+        <button>Modifier</button>
     </form>
 @endsection
