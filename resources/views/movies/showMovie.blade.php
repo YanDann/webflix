@@ -77,6 +77,7 @@
                 <div class="shadow p-4 mx-4">
                     <form action="" method="post">
                         @csrf
+                        @method('put')
 
                         <div>
                             <label class="form-label" for="comment">Message</label>

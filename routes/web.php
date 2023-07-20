@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutTeam;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JulienFriendController;
 use App\Http\Controllers\LoginController;
@@ -52,6 +53,9 @@ Route::post('/movies/add', [MovieController::class, 'store'])->middleware('auth'
 Route::get('/movie/{movie}/modifier', [MovieController::class, 'edit'])->middleware('auth');
 Route::put('/movie/{movie}/modifier', [MovieController::class, 'update'])->middleware('auth'); 
 Route::delete('/movie/{id}', [MovieController::class, 'destroy'])->middleware('auth');
+
+// Comments
+Route::put('/movie/{id}', [CommentController::class, 'send'])->middleware('auth');
 
 // Actors
 

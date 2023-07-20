@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Actor;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Movie;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -75,6 +76,11 @@ class DatabaseSeeder extends Seeder
 
                 $movie->actors()->attach($actor);
             }
+
+            Comment::factory()->create([
+                'movie_id' => Movie::all()->random(),
+                'user_id' => User::all()->random(),
+            ]);
         }
     }
 }
