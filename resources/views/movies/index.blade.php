@@ -3,7 +3,7 @@
 @section('content')
     @auth {{-- @if (Auth::user()) --}}
         <div class="text-center mb-4">
-            <a class="btn btn-primary" href="/movies/add">Créer un film</a>
+            <a class="btn btn-dark" href="/movies/add">Créer un film</a>
         </div>
     @endauth
 

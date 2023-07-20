@@ -23,7 +23,12 @@
 
         <div>
             <label for="birthday">Date de naissance</label>
+            @if ($actor->birthday != null)
             <input type="date" name="birthday" id="birthday" value="{{ old('birthday', $actor->birthday->format('Y-m-d')) }}">
+            @endif
+            @if ($actor->birthday == null)
+            <input type="date" name="birthday" id="birthday" value="">
+            @endif
             @error('birthday')
                 <div> {{ $message }} </div>
             @enderror
