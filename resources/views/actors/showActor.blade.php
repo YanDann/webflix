@@ -17,15 +17,17 @@
                     <h1> {{ $actor->name }} </h1>
                 </div>
                 <div class="d-flex justify-content-between my-2">
-                <p> {{ $actor->getAge() - $actor->birthday->format('Y') }} ans </p>
+                    <p> {{ $actor->getAge() - $actor->birthday->format('Y') }} ans </p>
                 </div>
-                <h2>Films</h2>
-                @foreach ($actor->movies as $movie)
-                    <a href="/movie/{{ $movie['id'] }}">
-                        <img class="img-cover-actor" src=" {{ $movie['cover'] }} " alt="">
-                    </a>
-                    <p> {{ $movie->title }} </p>
-                @endforeach
+                @if ($actor->movies->isNotEmpty())
+                    <h2>Films</h2>
+                    @foreach ($actor->movies as $movie)
+                        <a href="/movie/{{ $movie['id'] }}">
+                            <img class="img-cover-actor" src=" {{ $movie['cover'] }} " alt="">
+                        </a>
+                        <p> {{ $movie->title }} </p>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

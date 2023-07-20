@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
                     'language' => 'fr-FR',
                 ])->json();
     
-                $actor = Actor::firstOrCreate([
+                $actor = Actor::firstOrCreate(['id' => $cast['id']],[
                     'id' => $actor['id'],
                     'name' => $actor['name'],
                     'avatar' => 'https://image.tmdb.org/t/p/w500'.$actor['profile_path'],
