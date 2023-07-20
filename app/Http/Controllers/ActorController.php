@@ -73,10 +73,8 @@ class ActorController extends Controller
         return redirect('/actors');
     }
 
-    public function destroy(Request $request, string $id)
+    public function destroy(string $id)
     {
-        $actor = Actor::findOrFail($id);
-
         Actor::destroy($id);
 
         return redirect('/actors')->with('message', 'Acteur supprimé');
