@@ -32,19 +32,43 @@ class ActorController extends Controller
         ]);
     }
 
-    public function store(Request $request, Actor $actor)
+    public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|unique:actors|min:2',
             'avatar' => 'nullable|image|max:2048',
             'birthday' => 'nullable|date',
         ]);
-        
+
         Actor::create([
             'name' => $request->name,
-            'avatar' => '/storage/'.$request->file('avatar')->store('actors'),
+            'avatar' => '/storage/' . $request->file('avatar')->store('actors'),
             'birthday' => $request->birthday,
         ]);
+
+        return redirect('/actors');
+    }
+
+    public function edit(Actor $actor){
+        return view('actors.edit', [
+            'actor' => $actor,
+        ]);
+    }
+
+    public function update(Request $request, Actor $actor)
+    {
+        $validated = $request->validate([
+            'name' => 'required|unique:actors,name,'.$actor->id.'|min:2',
+            'avatar' => 'nullable|image|max:2048',
+            'birthday' => 'nullable|date',
+        ]);
+
+        if ($request->hasFile('avatar')) {
+            Storage::delete(str($actor->avatar)->remove('/storage/'));
+            $validated['avatar'] = '/storage/' . $request->file('avatar')->store('actors');
+        }
+
+        $actor->update($validated);
 
         return redirect('/actors');
     }
