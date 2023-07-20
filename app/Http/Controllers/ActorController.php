@@ -39,13 +39,12 @@ class ActorController extends Controller
             'avatar' => 'nullable|image|max:2048',
             'birthday' => 'nullable|date',
         ]);
-
-        if ($request->hasFile('avatar')) {
-            Storage::delete(str($actor->avatar)->remove('/storage/'));
-            $validated['avatar'] = '/storage/'.$request->file('avatar')->store('actors');
-        }
         
-        $actor->create($validated);
+        Actor::create([
+            'name' => $request->name,
+            'avatar' => '/storage/'.$request->file('avatar')->store('actors'),
+            'birthday' => $request->birthday,
+        ]);
 
         return redirect('/actors');
     }
