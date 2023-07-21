@@ -54,8 +54,8 @@ class Movie extends Model
         return $this->belongsToMany(Actor::class);
     }
 
-    public function comments(): BelongsTo
-    {
-        return $this->belongsTo(Comment::class);
-    }
+    // public function comments(): BelongsTo
+    // {
+    //     return $this->belongsTo(Comment::class);
+    // }
 }
