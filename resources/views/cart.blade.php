@@ -10,7 +10,7 @@
                         {{ $item['movie']->title }}
                         <strong>x{{ $item['quantity'] }}</strong>
                     </h6>
-                    <p> {{ $item['movie']->price }} </p>
+                    <p> {{ $item['movie']->price }} €</p>
                 </div>
             </div>
         @empty

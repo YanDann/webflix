@@ -25,7 +25,16 @@ class CartController extends Controller
 
     public function store(Movie $movie)
     {
-        
+        $cart = session('cart', []);
+
+        // Si le panier contient le produit
+        if (collect($cart)->contains('id', $movie->id)){
+            $index = array_search($movie->id, array_column($cart, 'id'));
+            $cart[$index]['quantity']++;
+            session()->put('cart', $cart);
+
+            return back();
+        }
 
         // cart est un tableau dans lequel on ajoute un truc
         session()->push('cart', [
