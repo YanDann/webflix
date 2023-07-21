@@ -75,6 +75,13 @@
 
             <div>
                 <div class="shadow p-4 mx-4">
+                    {{-- <div>
+                        @foreach ($movie->comments as $comment)
+                            <div>
+                                <p> {{ $comment->message }} </p>
+                            </div>
+                        @endforeach
+                    </div> --}}
                     <form action="" method="post">
                         @csrf
                         @method('put')
