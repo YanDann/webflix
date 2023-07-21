@@ -27,18 +27,19 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" href="/">Accueil</a>
+                    <a class="nav-link {{ request()->is('home') ? 'active' : ''}}" href="/">Accueil</a>
                     {{-- <a class="nav-link" href="/julien">Julien</a> --}}
-                    <a class="nav-link" href="/movies">Films</a>
-                    <a class="nav-link" href="/actors">Acteurs</a>
-                    <a class="nav-link" href="/categories">Catégories</a>
+                    <a class="nav-link {{ request()->is('movies') ? 'active' : ''}}" href="/movies">Films</a>
+                    <a class="nav-link {{ request()->is('actors') ? 'active' : ''}}" href="/actors">Acteurs</a>
+                    <a class="nav-link {{ request()->is('categories') ? 'active' : ''}}" href="/categories">Catégories</a>
                     {{-- @todo faire un dropdown --}}
                     {{-- <a class="nav-link" href="/julien?color=orange">Orange</a>
                     <a class="nav-link" href="/julien/guuts">Yan & Guuts</a>
                     <a class="nav-link" href="/julien/ares">Yan & Ares</a> --}}
-                    <a class="nav-link" href="/a-propos">A propos</a>
+                    <a class="nav-link {{ request()->is('a-propos') ? 'active' : ''}}" href="/a-propos">A propos</a>
                 </div>
                 <div class="navbar-nav">
+                    <a href="/panier" class="nav-link {{ request()->is('panier') ? 'active' : ''}}"> 🛒 ({{ count(session('cart', [])) }})</a>
                     @auth
                         <div class="nav-item dropdown">
                             <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

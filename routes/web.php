@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutTeam;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ActorController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
@@ -78,3 +79,7 @@ Route::delete('/logout', [LoginController::class, 'destroy']);
 // Mon compte
 
 Route::get('/mon-compte', [AccountController::class, 'index'])->middleware('auth');
+
+// Panier
+Route::get('/panier', [CartController::class, 'index']);
+Route::post('/panier/{movie}', [CartController::class, 'store']);
