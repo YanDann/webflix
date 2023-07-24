@@ -39,7 +39,7 @@
                     <a class="nav-link {{ request()->is('a-propos') ? 'active' : ''}}" href="/a-propos">A propos</a>
                 </div>
                 <div class="navbar-nav">
-                    <a href="/panier" class="nav-link {{ request()->is('panier') ? 'active' : ''}}"> 🛒 ({{ collect(session('cart', []))->sum('quantity') }})</a>
+                    <a href="/panier" class="nav-link {{ request()->is('panier') ? 'active' : ''}}"> 🛒 ({{ App\Cart::count() }}) / {{ App\Cart::total() }} €</a>
                     @auth
                         <div class="nav-item dropdown">
                             <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

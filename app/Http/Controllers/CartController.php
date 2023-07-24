@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -9,21 +10,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $cart = session('cart', []); // $_SESSION['cart']
-        // [2, 4, 6]
-        // [['id' = 2], ['id' = 4], ['id' = 6]]
-
-        foreach ($cart as $index => $item){
-            $cart[$index]['movie'] = Movie::find($item['id']);
-
-            // @todo Prix total de chaque produit
-            // @todo Prix total du panier
-        }
-
-        return view('cart', [
-            'cart' => $cart,
-
-        ]);
+        return view('cart', ['cart' => Cart::items(), 'total' => Cart::total()]);
     }
 
     public function store(Movie $movie)
@@ -31,10 +18,10 @@ class CartController extends Controller
         $cart = session('cart', []);
 
         // Si le panier contient le produit on incrémente la quantité
-        if (collect($cart)->contains('id', $movie->id)){
+        if (collect($cart)->contains('id', $movie->id)) {
             $index = array_search($movie->id, array_column($cart, 'id'));
             $cart[$index]['quantity']++;
-            session()->put('cart', $cart);
+            session()->put('cart', $cart); // Mettre à jour la session
 
             return back();
         }
@@ -44,6 +31,7 @@ class CartController extends Controller
             'id' => $movie->id,
             'quantity' => 1,
             'movie' => null,
+            'price' => null,
         ]);
 
         return back();
