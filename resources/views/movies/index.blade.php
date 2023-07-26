@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- La div pour faire du React --}}
-    <div id="root"></div>
 
     @auth {{-- @if (Auth::user()) --}}
         <div class="text-center mb-4">

@@ -124,4 +124,9 @@ class MovieController extends Controller
 
         return redirect('/movies')->with('message', 'Film supprimé');
     }
+
+    public function react()
+    {
+        return view('movies.react');
+    }
 }

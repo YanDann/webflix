@@ -46,7 +46,6 @@ Route::get('/category-test', function() {
 });
 
 // Movies
-
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/movie/{id}', [MovieController::class, 'showMovie']);
 Route::get('/movies/add', [MovieController::class, 'add'])->middleware('auth');
@@ -59,7 +58,6 @@ Route::delete('/movie/{id}', [MovieController::class, 'destroy'])->middleware('a
 Route::put('/movie/{id}', [CommentController::class, 'send'])->middleware('auth');
 
 // Actors
-
 Route::get('/actors', [ActorController::class, 'index']);
 Route::get('/actor/{id}', [ActorController::class, 'showActor']);
 Route::get('/actors/create', [ActorController::class, 'create'])->middleware('auth');
@@ -71,15 +69,16 @@ Route::delete('/actor/{id}', [ActorController::class, 'destroy'])->middleware('a
 // php artisan route:list => voir toutes les routes du projet
 
 // Authentification
-
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
 
 // Mon compte
-
 Route::get('/mon-compte', [AccountController::class, 'index'])->middleware('auth');
 
 // Panier
 Route::get('/panier', [CartController::class, 'index']);
 Route::post('/panier/{movie}', [CartController::class, 'store']);
+
+// Pages avec React
+Route::get('/movies-avec-react', [MovieController::class, 'react']);

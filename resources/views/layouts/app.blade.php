@@ -31,6 +31,7 @@
                     <a class="nav-link {{ request()->is('home') ? 'active' : ''}}" href="/">Accueil</a>
                     {{-- <a class="nav-link" href="/julien">Julien</a> --}}
                     <a class="nav-link {{ request()->is('movies') ? 'active' : ''}}" href="/movies">Films</a>
+                    <a class="nav-link {{ request()->is('movies-avec-react') ? 'active' : ''}}" href="/movies-avec-react">Films (react)</a>
                     <a class="nav-link {{ request()->is('actors') ? 'active' : ''}}" href="/actors">Acteurs</a>
                     <a class="nav-link {{ request()->is('categories') ? 'active' : ''}}" href="/categories">Catégories</a>
                     {{-- @todo faire un dropdown --}}
