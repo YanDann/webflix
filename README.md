@@ -74,3 +74,14 @@ Pour remplir la BDD, on peut faire (test) :
     # Vide la base
     php artisan migrate:fresh --seed
 ```
+
+## Ajouter React
+
+On doit déjà installer le plugin et React
+
+```bash
+    npm install --save-dev @vitejs/plugin-react
+    npm install --save-dev react react-dom
+```
+
+Ensuite, on modifie le fichier `vite.config.js`.

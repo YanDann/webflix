@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- La div pour faire du React --}}
+    <div id="root"></div>
+
     @auth {{-- @if (Auth::user()) --}}
         <div class="text-center mb-4">
             <a class="btn btn-dark" href="/movies/add">Créer un film</a>
@@ -26,20 +29,19 @@
                         {{ $movie->category->name }}
                     </p>
 
-                    
+
                     <div class="text-center">
                         <form class="d-inline" action="/panier/{{ $movie->id }}" method="post">
                             @csrf
                             <button class="btn btn-lg">🛒</button>
                         </form>
                         @if (Auth::user() && $movie->user_id === Auth::user()->id)
-                        <a href="/movie/{{ $movie->id }}/modifier" class="btn btn-lg"
-                            style="font-size: 18px">🖋️</a>
-                        <form class="d-inline" action="/movie/{{ $movie->id }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-lg" style="font-size: 18px">🗑️</button>
-                        </form>
+                            <a href="/movie/{{ $movie->id }}/modifier" class="btn btn-lg" style="font-size: 18px">🖋️</a>
+                            <form class="d-inline" action="/movie/{{ $movie->id }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-lg" style="font-size: 18px">🗑️</button>
+                            </form>
                         @endif
                     </div>
 
