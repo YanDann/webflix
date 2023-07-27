@@ -86,7 +86,7 @@ Route::get('/movies-avec-react', [MovieController::class, 'react']);
 
 // API
 Route::get('/api/movies', function (){
-    $movies = Movie::with('category', 'actors')->get();
+    $movies = Movie::with('category', 'actors')->paginate(4);
 
     return $movies;
 });
